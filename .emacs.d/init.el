@@ -26,9 +26,23 @@
 (require 'saveplace)
 (setq-default save-place t)
 
+;; recentf
+(setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
+(setq recentf-max-saved-items 1000)
+(setq recentf-exclude '(".recentf"))
+(setq recentf-auto-cleanup 'never)
+(setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+(recentf-mode t)
+
 ;; CUA mode
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
+
+;; helm
+(require 'helm-config)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(helm-mode t)
 
 ;; タブ文字を使わない
 (setq-default indent-tabs-mode nil)
@@ -38,6 +52,15 @@
 (setq tab-stop-list
       '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
           64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
+
+;; バックアップとオートセーブの設定
+(setq backup-directory (expand-file-name "backups/" user-emacs-directory))
+(unless (file-exists-p backup-directory)
+  (mkdir backup-directory))
+(add-to-list 'backup-directory-alist
+             `("." . ,backup-directory))
+(setq auto-save-file-name-transforms
+      `((".*" ,backup-directory t)))
 
 ;;; 見た目周り
 ;; スプラッシュ非表示
@@ -75,6 +98,15 @@
 
 ;; GUI用設定
 (when window-system
+  ;; frame title
+  (setq frame-title-format "%f")
+  ;; frame size
+  (setq default-frame-alist
+        (append (list
+                 '(width . 120)
+                 '(height . 50))
+                default-frame-alist))
+  (setq initial-frame-alist default-frame-alist)
   ;; font
   (cond ((member "Migu 1M" (font-family-list))
          (set-face-attribute 'default nil :family "Migu 1M" :height 120))
@@ -92,7 +124,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; company-mode
-(setq company-idle-delay 1.5)
+(setq company-idle-delay 0.5)
 (add-hook 'after-init-hook 'global-company-mode)
 (defun company-mode-hooks ()
   "Hooks for company-mode."
