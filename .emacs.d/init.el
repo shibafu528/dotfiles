@@ -1,5 +1,11 @@
 ;; -*- coding: utf-8 -*-
 
+;; custom-fileの定義
+(setq custom-file
+      (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; init package manager
 (require 'package)
 (setq package-archives
@@ -7,6 +13,10 @@
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
+(unless package-archive-contents (package-refresh-contents))
+(dolist (pkg package-selected-packages)
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
 ;;; 振る舞いの設定
 ;; default charset
@@ -102,9 +112,3 @@
   (set-face-attribute 'company-scrollbar-bg nil
                       :background "gray40"))
 (add-hook 'company-mode-hook 'company-mode-hooks)
-
-;; custom-fileの定義
-(setq custom-file
-      (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
