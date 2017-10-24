@@ -83,7 +83,9 @@
         ((member "ＭＳ ゴシック" (font-family-list))
          (set-face-attribute 'default nil :family "ＭＳ ゴシック" :height 120)))
   ;; theme
-  (load-theme 'misterioso t))
+  (load-theme 'misterioso t)
+  ;; powerline
+  (powerline-default-theme))
 
 ;;; コーディング支援
 ;; flycheck
