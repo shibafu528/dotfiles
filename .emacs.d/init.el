@@ -18,6 +18,10 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
+;; load path
+(add-to-list 'load-path
+             (expand-file-name "elisp/" user-emacs-directory))
+
 ;;; 振る舞いの設定
 ;; default charset
 (prefer-coding-system 'utf-8)
@@ -42,6 +46,7 @@
 (require 'helm-config)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode t)
 
 ;; タブ文字を使わない
@@ -95,6 +100,9 @@
 ;; nlinum
 (global-nlinum-mode t)
 (setq nlinum-format "%4d ")
+
+;; window-resizer
+(require 'window-resizer)
 
 ;; GUI用設定
 (when window-system
