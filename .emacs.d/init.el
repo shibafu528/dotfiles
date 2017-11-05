@@ -152,6 +152,12 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; git-gutter
+;; (linum/nlinumを使う場合、GUIであればfringeなら併用可能だがCUIでは不可?)
+(when window-system
+  (require 'git-gutter-fringe)
+  (global-git-gutter-mode t))
+
 ;; company-mode
 (setq company-idle-delay 0.5)
 (add-hook 'after-init-hook 'global-company-mode)
