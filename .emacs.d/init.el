@@ -11,7 +11,8 @@
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")))
+        ("org" . "http://orgmode.org/elpa/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
 (dolist (pkg package-selected-packages)
@@ -103,6 +104,26 @@
 
 ;; window-resizer
 (require 'window-resizer)
+
+;; undohist
+(when (require 'undohist nil t)
+  (undohist-initialize))
+
+;; undo-tree
+(global-undo-tree-mode)
+
+;; point-undo
+(when (require 'point-undo nil t)
+  (global-set-key (kbd "M-[") 'point-undo)
+  (global-set-key (kbd "M-]") 'point-redo))
+
+;; color-moccur, moccur-edit
+(when (require 'color-moccur nil t)
+  (setq moccur-split-word t)
+  (require 'moccur-edit nil t))
+
+;; wgrep
+(require 'wgrep nil t)
 
 ;; GUI用設定
 (when window-system
