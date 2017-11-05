@@ -68,6 +68,30 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-directory t)))
 
+;; undohist
+(when (require 'undohist nil t)
+  (undohist-initialize))
+
+;; undo-tree
+(global-undo-tree-mode)
+
+;; point-undo
+(when (require 'point-undo nil t)
+  (global-set-key (kbd "M-[") 'point-undo)
+  (global-set-key (kbd "M-]") 'point-redo))
+
+;; color-moccur, moccur-edit
+(when (require 'color-moccur nil t)
+  (setq moccur-split-word t)
+  (require 'moccur-edit nil t))
+
+;; wgrep
+(require 'wgrep nil t)
+
+;; which-key
+(which-key-setup-side-window-right-bottom)
+(which-key-mode t)
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
@@ -105,26 +129,6 @@
 ;; window-resizer
 (require 'window-resizer)
 
-;; undohist
-(when (require 'undohist nil t)
-  (undohist-initialize))
-
-;; undo-tree
-(global-undo-tree-mode)
-
-;; point-undo
-(when (require 'point-undo nil t)
-  (global-set-key (kbd "M-[") 'point-undo)
-  (global-set-key (kbd "M-]") 'point-redo))
-
-;; color-moccur, moccur-edit
-(when (require 'color-moccur nil t)
-  (setq moccur-split-word t)
-  (require 'moccur-edit nil t))
-
-;; wgrep
-(require 'wgrep nil t)
-
 ;; GUI用設定
 (when window-system
   ;; frame title
@@ -158,7 +162,7 @@
   (require 'git-gutter-fringe)
   (global-git-gutter-mode t))
 
-;; company-mode
+;; company
 (setq company-idle-delay 0.5)
 (add-hook 'after-init-hook 'global-company-mode)
 (defun company-mode-hooks ()
@@ -182,6 +186,13 @@
                       :background "gray40"))
 (add-hook 'company-mode-hook 'company-mode-hooks)
 
+;; projectile
+(projectile-mode)
+(add-to-list 'projectile-globally-ignored-directories
+             "node_modules")
+(setq projectile-enable-caching t)
+(setq projectile-completion-system 'helm)
+
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
@@ -203,3 +214,6 @@
         ruby-deep-indent-paren-style nil))
 (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
 (add-hook 'ruby-mode-hook #'ruby-electric-mode)
+
+;; rainbow-delimiters-mode
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
