@@ -175,3 +175,25 @@
   (set-face-attribute 'company-scrollbar-bg nil
                       :background "gray40"))
 (add-hook 'company-mode-hook 'company-mode-hooks)
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
+;; php-mode
+(setq php-site-url "https://secure.php.net/"
+      php-manual-url 'ja)
+
+;; ruby-mode
+(defun ruby-mode-hooks ()
+  "Hooks for Ruby mode."
+  (setq ruby-indent-level 2
+        ruby-indent-tabs-mode nil
+        ruby-deep-indent-paren-style nil))
+(add-hook 'ruby-mode-hook 'ruby-mode-hooks)
+(add-hook 'ruby-mode-hook #'ruby-electric-mode)

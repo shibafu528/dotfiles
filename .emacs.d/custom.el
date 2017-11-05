@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (wgrep moccur-edit color-moccur point-undo undo-tree undohist helm powerline flycheck markdown-mode nlinum company editorconfig gitattributes-mode gitignore-mode php-mode powershell git-gutter magit dash))))
+    (quickrun inf-ruby ruby-electric yaml-mode sass-mode less-css-mode web-mode wgrep moccur-edit color-moccur point-undo undo-tree undohist helm powerline flycheck markdown-mode nlinum company editorconfig gitattributes-mode gitignore-mode php-mode powershell git-gutter magit dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
