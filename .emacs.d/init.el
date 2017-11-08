@@ -92,6 +92,16 @@
 (which-key-setup-side-window-right-bottom)
 (which-key-mode t)
 
+;; pcre2el
+(add-hook 'prog-mode-hook 'rxt-mode)
+(setq reb-re-syntax 'pcre)
+
+;; visual-regexp-steroids
+(setq vr/engine 'pcre2el)
+(global-set-key (kbd "M-%") 'vr/query-replace)
+(global-set-key (kbd "C-M-r") 'vr/isearch-backward)
+(global-set-key (kbd "C-M-s") 'vr/isearch-forward)
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
