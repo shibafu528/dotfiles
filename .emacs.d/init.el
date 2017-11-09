@@ -139,6 +139,9 @@
 ;; window-resizer
 (require 'window-resizer)
 
+;; smart-cursor-color
+(smart-cursor-color-mode t)
+
 ;; GUI用設定
 (when window-system
   ;; frame title
