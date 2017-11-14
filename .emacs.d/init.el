@@ -106,6 +106,13 @@
 (require 'create-temporary-buffer)
 (global-set-key (kbd "C-c t") 'create-temporary-buffer)
 
+;; SKK
+(setq skk-user-directory (expand-file-name "ddskk/" user-emacs-directory))
+(when (require 'skk nil t)
+  (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+  (setq default-input-method "japanese-skk")
+  (require 'skk-study))
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
