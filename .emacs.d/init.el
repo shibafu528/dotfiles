@@ -102,6 +102,10 @@
 (global-set-key (kbd "C-M-r") 'vr/isearch-backward)
 (global-set-key (kbd "C-M-s") 'vr/isearch-forward)
 
+;; 一時バッファ生成
+(require 'create-temporary-buffer)
+(global-set-key (kbd "C-c t") 'create-temporary-buffer)
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
@@ -168,6 +172,9 @@
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; magit
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;; git-gutter
 ;; (linum/nlinumを使う場合、GUIであればfringeなら併用可能だがCUIでは不可?)
