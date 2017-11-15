@@ -59,6 +59,12 @@
       '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
           64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
+;; スクロールの設定
+(setq scroll-conservatively 1
+      scroll-margin 3
+      scroll-preserve-screen-position t)
+(setq comint-scroll-show-maximum-output t)
+
 ;; バックアップとオートセーブの設定
 (setq backup-directory (expand-file-name "backups/" user-emacs-directory))
 (unless (file-exists-p backup-directory)
