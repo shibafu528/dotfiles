@@ -245,8 +245,16 @@
   (setq ruby-indent-level 2
         ruby-indent-tabs-mode nil
         ruby-deep-indent-paren-style nil))
-(add-hook 'ruby-mode-hook 'ruby-mode-hooks)
-(add-hook 'ruby-mode-hook #'ruby-electric-mode)
+(cond ((executable-find "ruby")
+       ;; Rubyがあればenh-ruby-modeに頼る
+       (add-hook 'enh-ruby-mode-hook 'ruby-mode-hooks)
+       (add-hook 'enh-ruby-mode-hook #'ruby-electric-mode)
+       (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+       (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode)))
+      (t
+       ;; ない環境ではruby-modeの設定を行う
+       (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
+       (add-hook 'ruby-mode-hook #'ruby-electric-mode)))
 
 ;; rainbow-delimiters-mode
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
