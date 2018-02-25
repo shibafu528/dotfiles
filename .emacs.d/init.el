@@ -119,6 +119,9 @@
   (setq default-input-method "japanese-skk")
   (require 'skk-study))
 
+;; ビープ音の消去
+(setq ring-bell-function 'ignore)
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
