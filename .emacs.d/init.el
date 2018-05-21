@@ -162,6 +162,11 @@
 ;; smart-cursor-color
 (smart-cursor-color-mode t)
 
+;; avy
+(when (require 'avy nil t)
+  (global-set-key (kbd "M-g M-g") 'avy-goto-line)
+  (global-set-key (kbd "M-g h") 'avy-goto-char-timer))
+
 ;; GUI用設定
 (when window-system
   ;; frame title
@@ -228,6 +233,7 @@
              "node_modules")
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'helm)
+(global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -268,4 +274,3 @@
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
   (when (file-exists-p local-file)
     (load local-file)))
-
