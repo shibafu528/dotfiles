@@ -172,6 +172,15 @@
   (global-set-key (kbd "M-g M-g") 'avy-goto-line)
   (global-set-key (kbd "M-g h") 'avy-goto-char-timer))
 
+;; diminish
+(when (require 'diminish nil t)
+  (require 'safe-diminish)
+  (safe-diminish "company" 'company-mode)
+  (safe-diminish "helm-mode" 'helm-mode)
+  (safe-diminish "smart-cursor-color" 'smart-cursor-color-mode)
+  (safe-diminish "undo-tree" 'undo-tree-mode)
+  (safe-diminish "which-key" 'which-key-mode))
+
 ;; GUI用設定
 (when window-system
   ;; frame title
