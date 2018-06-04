@@ -112,6 +112,11 @@
 (require 'create-temporary-buffer)
 (global-set-key (kbd "C-c t") 'create-temporary-buffer)
 
+;; open-junk-file
+(when (require 'open-junk-file nil t)
+  (setq open-junk-file-format "~/junk/%Y%m%d-%H%M%S.")
+  (global-set-key (kbd "C-c j") 'open-junk-file))
+
 ;; SKK
 (setq skk-user-directory (expand-file-name "ddskk/" user-emacs-directory))
 (when (require 'skk nil t)
