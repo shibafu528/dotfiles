@@ -45,10 +45,13 @@
 
 ;; helm
 (require 'helm-config)
+(helm-mode t)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode t)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z") 'helm-select-action)
 
 ;; タブ文字を使わない
 (setq-default indent-tabs-mode nil)
