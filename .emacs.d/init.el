@@ -112,19 +112,18 @@
 (global-set-key (kbd "C-M-s") 'vr/isearch-forward)
 
 ;; 一時バッファ生成
-(require 'create-temporary-buffer)
+(autoload 'create-temporary-buffer "create-temporary-buffer" :interactive t)
 (global-set-key (kbd "C-c t") 'create-temporary-buffer)
 
 ;; open-junk-file
-(when (require 'open-junk-file nil t)
-  (setq open-junk-file-format "~/junk/%Y%m%d-%H%M%S.")
-  (global-set-key (kbd "C-c j") 'open-junk-file))
+(setq open-junk-file-format "~/junk/%Y%m%d-%H%M%S.")
+(global-set-key (kbd "C-c j") 'open-junk-file)
 
 ;; SKK
 (setq skk-user-directory (expand-file-name "ddskk/" user-emacs-directory))
-(when (require 'skk nil t)
-  (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
-  (setq default-input-method "japanese-skk")
+(setq default-input-method "japanese-skk")
+(global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+(with-eval-after-load 'skk
   (require 'skk-study))
 
 ;; ビープ音の消去
@@ -165,15 +164,14 @@
 (setq nlinum-format "%4d ")
 
 ;; window-resizer
-(require 'window-resizer)
+(autoload 'window-resizer "window-resizer" :interactive t)
 
 ;; smart-cursor-color
 (smart-cursor-color-mode t)
 
 ;; avy
-(when (require 'avy nil t)
-  (global-set-key (kbd "M-g M-g") 'avy-goto-line)
-  (global-set-key (kbd "M-g h") 'avy-goto-char-timer))
+(global-set-key (kbd "M-g M-g") 'avy-goto-line)
+(global-set-key (kbd "M-g h") 'avy-goto-char-timer)
 
 ;; diminish
 (when (require 'diminish nil t)
@@ -196,12 +194,13 @@
                 default-frame-alist))
   (setq initial-frame-alist default-frame-alist)
   ;; font
-  (cond ((member "Migu 1M" (font-family-list))
-         (set-face-attribute 'default nil :family "Migu 1M" :height 120))
-        ((member "VL ゴシック" (font-family-list))
-         (set-face-attribute 'default nil :family "VL ゴシック" :height 120))
-        ((member "ＭＳ ゴシック" (font-family-list))
-         (set-face-attribute 'default nil :family "ＭＳ ゴシック" :height 120)))
+  (let ((fonts (font-family-list)))
+    (cond ((member "Migu 1M" fonts)
+           (set-face-attribute 'default nil :family "Migu 1M" :height 120))
+          ((member "VL ゴシック" fonts)
+           (set-face-attribute 'default nil :family "VL ゴシック" :height 120))
+          ((member "ＭＳ ゴシック" fonts)
+           (set-face-attribute 'default nil :family "ＭＳ ゴシック" :height 120))))
   ;; theme
   (load-theme 'misterioso t)
   ;; powerline
