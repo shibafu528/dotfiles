@@ -161,9 +161,15 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
-;; nlinum
-(global-nlinum-mode t)
-(setq nlinum-format "%4d ")
+;; 行番号表示
+(cond ((>= emacs-major-version 26)
+       ;; 26.1以降は標準機能を使用
+       (global-display-line-numbers-mode)
+       (setq-default display-line-numbers-width 4))
+      (t
+       ;; 25.3まではnlinumを使用
+       (global-nlinum-mode t)
+       (setq nlinum-format "%4d ")))
 
 ;; window-resizer
 (autoload 'window-resizer "window-resizer" :interactive t)
