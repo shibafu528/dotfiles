@@ -28,8 +28,10 @@
 (prefer-coding-system 'utf-8)
 
 ;; saveplace
-(require 'saveplace)
-(setq-default save-place t)
+(if (>= emacs-major-version 25)
+    (save-place-mode 1)
+  (require 'saveplace)
+  (setq-default save-place t))
 
 ;; recentf
 (setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
