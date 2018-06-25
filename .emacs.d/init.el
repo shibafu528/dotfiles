@@ -295,6 +295,9 @@
 ;; rainbow-delimiters-mode
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; adoc-mode
+(add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
   (when (file-exists-p local-file)
