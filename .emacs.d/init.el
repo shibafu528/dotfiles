@@ -129,6 +129,16 @@
 (with-eval-after-load 'skk
   (require 'skk-study))
 
+;; yasnippet
+(require 'yasnippet)
+(when (require 'helm-c-yasnippet nil t)
+  (setq helm-yas-space-match-any-greedy t)
+  (global-set-key (kbd "C-c y") 'helm-yas-complete))
+(define-key yas-minor-mode-map (kbd "C-c i i") 'yas-insert-snippet)
+(define-key yas-minor-mode-map (kbd "C-c i n") 'yas-new-snippet)
+(define-key yas-minor-mode-map (kbd "C-c i v") 'yas-visit-snippet-file)
+(yas-global-mode t)
+
 ;; ビープ音の消去
 (setq ring-bell-function 'ignore)
 
@@ -189,7 +199,8 @@
   (safe-diminish "helm-mode" 'helm-mode)
   (safe-diminish "smart-cursor-color" 'smart-cursor-color-mode)
   (safe-diminish "undo-tree" 'undo-tree-mode)
-  (safe-diminish "which-key" 'which-key-mode))
+  (safe-diminish "which-key" 'which-key-mode)
+  (safe-diminish "yasnippet" 'yas-minor-mode))
 
 ;; GUI用設定
 (when window-system
