@@ -2,6 +2,7 @@
 
 !/elisp
 !/elisp/*.el
+!/snippets
 !/init.el
 !/custom.el
 !/.gitignore

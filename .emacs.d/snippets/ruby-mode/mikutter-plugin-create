@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: mikutter-plugin-create
+# key: pcreate
+# --
+# -*- coding: utf-8 -*-
+
+Plugin.create(:${1:slug}) do
+  $0
+end
