@@ -309,6 +309,13 @@
 ;; adoc-mode
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 
+;; rust-mode
+(add-hook 'rust-mode-hook #'cargo-minor-mode)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'rust-mode-hook #'flycheck-rust-setup)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
   (when (file-exists-p local-file)
