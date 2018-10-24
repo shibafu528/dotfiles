@@ -82,6 +82,7 @@
 
 ;; undohist
 (when (require 'undohist nil t)
+  (setq undohist-ignored-files '("/tmp", "COMMIT_EDITMSG"))
   (undohist-initialize))
 
 ;; undo-tree
@@ -200,7 +201,8 @@
   (safe-diminish "smart-cursor-color" 'smart-cursor-color-mode)
   (safe-diminish "undo-tree" 'undo-tree-mode)
   (safe-diminish "which-key" 'which-key-mode)
-  (safe-diminish "yasnippet" 'yas-minor-mode))
+  (safe-diminish "yasnippet" 'yas-minor-mode)
+  (safe-diminish "editorconfig" 'editorconfig-mode))
 
 ;; GUI用設定
 (when window-system
@@ -271,6 +273,10 @@
 (setq projectile-completion-system 'helm)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
+;; editorconfig-mode
+;; TODO: vue-modeでうまく動作しない。オープン後に(editorconfig-apply)すれば効くけど...
+(editorconfig-mode t)
+
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
@@ -279,6 +285,19 @@
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
+;; emmet-mode
+(defun emmet-mode-hooks ()
+  "Hooks for Emmet mode."
+  (setq emmet-indent-after-insert nil))
+(add-hook 'sgml-mode-hook #'emmet-mode)
+(add-hook 'emmet-mode-hook #'emmet-mode-hooks)
+
+;; vue-mode
+(add-hook 'vue-mode-hook #'add-node-modules-path)
+(flycheck-add-mode 'javascript-eslint 'vue-mode)
+(flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+(flycheck-add-mode 'javascript-eslint 'css-mode)
 
 ;; php-mode
 (setq php-site-url "https://secure.php.net/"
