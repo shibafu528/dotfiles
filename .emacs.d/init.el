@@ -82,7 +82,7 @@
 
 ;; undohist
 (when (require 'undohist nil t)
-  (setq undohist-ignored-files '("/tmp", "COMMIT_EDITMSG"))
+  (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG"))
   (undohist-initialize))
 
 ;; undo-tree
@@ -231,6 +231,12 @@
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(defun flycheck-mode-hooks ()
+  "Hooks for flycheck-mode."
+  (flycheck-add-mode 'javascript-eslint 'vue-mode)
+  (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+  (flycheck-add-mode 'javascript-eslint 'css-mode))
+(add-hook 'flycheck-mode-hook #'flycheck-mode-hooks)
 
 ;; magit
 (global-set-key (kbd "C-c g") 'magit-status)
@@ -295,9 +301,6 @@
 
 ;; vue-mode
 (add-hook 'vue-mode-hook #'add-node-modules-path)
-(flycheck-add-mode 'javascript-eslint 'vue-mode)
-(flycheck-add-mode 'javascript-eslint 'vue-html-mode)
-(flycheck-add-mode 'javascript-eslint 'css-mode)
 
 ;; php-mode
 (setq php-site-url "https://secure.php.net/"
