@@ -183,6 +183,12 @@
        (global-nlinum-mode t)
        (setq nlinum-format "%4d ")))
 
+;; ウィンドウ逆順切替
+(defun other-window-reverse ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "C-x O") 'other-window-reverse)
+
 ;; window-resizer
 (autoload 'window-resizer "window-resizer" :interactive t)
 
@@ -297,6 +303,7 @@
   "Hooks for Emmet mode."
   (setq emmet-indent-after-insert nil))
 (add-hook 'sgml-mode-hook #'emmet-mode)
+(add-hook 'web-mode-hook #'emmet-mode)
 (add-hook 'emmet-mode-hook #'emmet-mode-hooks)
 
 ;; vue-mode
