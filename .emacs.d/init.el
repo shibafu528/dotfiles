@@ -21,8 +21,10 @@
     (package-install pkg)))
 
 ;; load path
-(add-to-list 'load-path
-             (expand-file-name "elisp/" user-emacs-directory))
+(let ((user-lisp-dir (expand-file-name "elisp/" user-emacs-directory)))
+  (add-to-list 'load-path user-lisp-dir)
+  (let ((default-directory user-lisp-dir))
+    (normal-top-level-add-subdirs-to-load-path)))
 
 ;;; 振る舞いの設定
 ;; default charset
@@ -319,13 +321,15 @@
   (setq ruby-indent-level 2
         ruby-indent-tabs-mode nil
         ruby-deep-indent-paren-style nil))
+(setq use-enh-ruby nil)
 (cond ((executable-find "ruby")
        ;; Rubyがあればenh-ruby-modeに頼る
        (add-hook 'enh-ruby-mode-hook 'ruby-mode-hooks)
        (add-hook 'enh-ruby-mode-hook #'ruby-electric-mode)
        (add-hook 'enh-ruby-mode-hook 'yard-mode)
        (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-       (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode)))
+       (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+       (setq use-enh-ruby t))
       (t
        ;; ない環境ではruby-modeの設定を行う
        (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
@@ -342,6 +346,16 @@
 (add-hook 'rust-mode-hook #'cargo-minor-mode)
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
+
+;; mikutter-mode
+(when (require 'mikutter nil t)
+  (setq mikutter:dir "~/git/mikutter/")
+  ;; enh-ruby-modeを使う環境の場合、フック設定が必要 (内容はmikutter.elのコピペ)
+  (when use-enh-ruby
+    (add-hook 'enh-ruby-mode-hook
+              #'(lambda ()
+                  (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
+                      (mikutter-mode))))))
 
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
