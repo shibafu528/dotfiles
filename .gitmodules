@@ -1,3 +1,6 @@
 [submodule ".emacs.d/elisp/mikutter-mode"]
 	path = .emacs.d/elisp/mikutter-mode
 	url = https://github.com/toshia/mikutter-mode.git
+[submodule ".emacs.d/elisp/git-complete"]
+	path = .emacs.d/elisp/git-complete
+	url = https://github.com/zk-phi/git-complete

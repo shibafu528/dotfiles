@@ -286,6 +286,10 @@
 (setq projectile-completion-system 'helm)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
+;; git-complete
+(when (require 'git-complete)
+  (global-set-key (kbd "C-c C-o") 'git-complete))
+
 ;; editorconfig-mode
 ;; TODO: vue-modeでうまく動作しない。オープン後に(editorconfig-apply)すれば効くけど...
 (editorconfig-mode t)
