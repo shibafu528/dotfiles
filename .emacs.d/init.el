@@ -211,6 +211,9 @@
   (safe-diminish "yasnippet" 'yas-minor-mode)
   (safe-diminish "editorconfig" 'editorconfig-mode))
 
+;; docker
+(global-set-key (kbd "C-c d") 'docker)
+
 ;; GUI用設定
 (when window-system
   ;; frame title
