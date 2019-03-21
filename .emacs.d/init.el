@@ -326,7 +326,8 @@
   "Hooks for Ruby mode."
   (setq ruby-indent-level 2
         ruby-indent-tabs-mode nil
-        ruby-deep-indent-paren-style nil))
+        ruby-deep-indent-paren-style nil
+        ruby-insert-encoding-magic-comment nil))
 (setq use-enh-ruby nil)
 (cond ((executable-find "ruby")
        ;; Rubyがあればenh-ruby-modeに頼る
