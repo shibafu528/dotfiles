@@ -71,6 +71,9 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
+# rbenv
+eval "$(rbenv init -)"
+
 # nodenv
 eval "$(nodenv init -)"
 
