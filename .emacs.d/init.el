@@ -253,10 +253,21 @@
 (global-set-key (kbd "C-c g") 'magit-status)
 
 ;; git-gutter
-;; (linum/nlinumを使う場合、GUIであればfringeなら併用可能だがCUIでは不可?)
-(when window-system
-  (require 'git-gutter-fringe)
-  (global-git-gutter-mode t))
+(cond ((>= emacs-major-version 26)
+       ;; 26.1以降は通常のgit-gutter-modeを使用
+       (global-git-gutter-mode t)
+       (custom-set-variables
+        '(git-gutter:modified-sign " ")
+        '(git-gutter:added-sign " ")
+        '(git-gutter:deleted-sign " "))
+       (set-face-background 'git-gutter:modified "purple")
+       (set-face-background 'git-gutter:added "green")
+       (set-face-background 'git-gutter:deleted "red"))
+      ((window-system)
+       ;; 25.3まではGUI環境下であればgit-gutter-fringeを使用
+       ;; (CUIの場合、fringeが使えずnlinumと干渉するので諦める)
+       (require 'git-gutter-fringe)
+       (global-git-gutter-mode t)))
 
 ;; company
 (setq company-idle-delay 0.5)
