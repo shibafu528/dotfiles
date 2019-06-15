@@ -7,18 +7,6 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/shibafu/.zshrc'
 
-# PATH
-PATH="$HOME/bin:$PATH"
-PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
-PATH="$HOME/.phpenv/bin:$PATH"
-PATH="/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH"
-
-export EDITOR="nano"
-export DISABLE_BUNDLER_SETUP=""
-
-export ANDROID_HOME=/home/shibafu/Android/Sdk
-export ANDROID_NDK_HOME=/home/shibafu/Android/android-ndk-r14b
-
 # alias
 alias ls='ls --color=auto'
 alias la='ls -a'
@@ -70,12 +58,3 @@ bindkey "^[[4~" end-of-line
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-
-# rbenv
-eval "$(rbenv init -)"
-
-# nodenv
-eval "$(nodenv init -)"
-
-# phpenv
-eval "$(phpenv init -)"
