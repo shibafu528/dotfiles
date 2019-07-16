@@ -161,6 +161,7 @@
 (cond (window-system
        ;; TODO: ちょっと明るすぎるかも…
        (set-face-background 'hl-line "#1f5751")
+       (set-face-attribute 'hl-line nil :inherit nil)
        ;; リージョンがアクティブな間はハイライトさせない
        (add-hook 'activate-mark-hook
                  #'(lambda () (global-hl-line-mode 0)))
