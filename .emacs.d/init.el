@@ -166,7 +166,10 @@
        (add-hook 'activate-mark-hook
                  #'(lambda () (global-hl-line-mode 0)))
        (add-hook 'deactivate-mark-hook
-                 #'(lambda () (global-hl-line-mode t))))
+                 #'(lambda ()
+                     (global-hl-line-mode t)
+                     ;; なぜかカーソルが黒くなるので再設定する
+                     (set-cursor-color (foreground-color-at-point)))))
       (t
        (setq hl-line-face 'underline)))
 
