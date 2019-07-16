@@ -157,10 +157,17 @@
 (show-paren-mode t)
 
 ;; 行ハイライト
-;; (CUIでしか好みの表示にならない、要調整)
-(unless window-system
-  (setq hl-line-face 'underline)
-  (global-hl-line-mode t))
+(global-hl-line-mode t)
+(cond (window-system
+       ;; TODO: ちょっと明るすぎるかも…
+       (set-face-background 'hl-line "#1f5751")
+       ;; リージョンがアクティブな間はハイライトさせない
+       (add-hook 'activate-mark-hook
+                 #'(lambda () (global-hl-line-mode 0)))
+       (add-hook 'deactivate-mark-hook
+                 #'(lambda () (global-hl-line-mode t))))
+      (t
+       (setq hl-line-face 'underline)))
 
 ;; 行列番号表示
 (line-number-mode t)
