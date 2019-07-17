@@ -229,6 +229,11 @@
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
 
+;; neotree
+(global-set-key (kbd "C-S-n") 'neotree-toggle)
+(setq neo-smart-open t)
+(setq neo-show-hidden-files t)
+
 ;; GUI用設定
 (when window-system
   ;; frame title
