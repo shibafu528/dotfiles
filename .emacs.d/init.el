@@ -158,18 +158,21 @@
 
 ;; 行ハイライト
 (global-hl-line-mode t)
+(defun activate-mark-hooks ()
+  "Hooks for 'activate-mark-hook'."
+  (global-hl-line-mode 0))
+(defun deactivate-mark-hooks ()
+  "Hooks for 'deactivate-mark-hook'."
+  (global-hl-line-mode t)
+  ;; なぜかカーソルが黒くなるので再設定する
+  (set-cursor-color (foreground-color-at-point)))
 (cond (window-system
        ;; TODO: ちょっと明るすぎるかも…
        (set-face-background 'hl-line "#1f5751")
        (set-face-attribute 'hl-line nil :inherit nil)
        ;; リージョンがアクティブな間はハイライトさせない
-       (add-hook 'activate-mark-hook
-                 #'(lambda () (global-hl-line-mode 0)))
-       (add-hook 'deactivate-mark-hook
-                 #'(lambda ()
-                     (global-hl-line-mode t)
-                     ;; なぜかカーソルが黒くなるので再設定する
-                     (set-cursor-color (foreground-color-at-point)))))
+       (add-hook 'activate-mark-hook 'activate-mark-hooks)
+       (add-hook 'deactivate-mark-hook 'deactivate-mark-hooks))
       (t
        (setq hl-line-face 'underline)))
 
@@ -378,14 +381,14 @@
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
 
 ;; mikutter-mode
+(defun turn-on-mikutter-mode-in-mikutter-dir ()
+  (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
+      (mikutter-mode)))
 (when (require 'mikutter nil t)
   (setq mikutter:dir "~/git/mikutter/")
   ;; enh-ruby-modeを使う環境の場合、フック設定が必要 (内容はmikutter.elのコピペ)
   (when use-enh-ruby
-    (add-hook 'enh-ruby-mode-hook
-              #'(lambda ()
-                  (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
-                      (mikutter-mode))))))
+    (add-hook 'enh-ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)))
 
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
