@@ -145,6 +145,16 @@
 ;; ビープ音の消去
 (setq ring-bell-function 'ignore)
 
+;; force-revert-buffer
+(defun force-revert-buffer ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (if (or (not (buffer-modified-p))
+          (yes-or-no-p "Revert buffer from file? "))
+      (revert-buffer t t)
+    (message nil)))
+(global-set-key (kbd "C-x RET RET") 'force-revert-buffer)
+
 ;;; 見た目周り
 ;; スプラッシュ非表示
 (setq inhibit-startup-message t)
