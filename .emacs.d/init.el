@@ -268,6 +268,16 @@
   ;; powerline
   (powerline-default-theme))
 
+;; org-mode
+(with-eval-after-load 'org
+    (when window-system
+      (let ((block-bg "#1F262E"))
+        (set-face-background 'org-block-begin-line block-bg)
+        (set-face-background 'org-block-end-line block-bg)
+        (set-face-background 'org-block block-bg))
+      (setq org-src-fontify-natively t)
+      (setq org-fontify-quote-and-verse-blocks t)))
+
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
