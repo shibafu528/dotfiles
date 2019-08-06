@@ -369,6 +369,14 @@
 (add-hook 'vue-mode-hook #'add-node-modules-path)
 
 ;; php-mode
+(defun php-mode-hooks()
+  "Hooks for PHP mode."
+  (require 'company-php)
+  (ac-php-core-eldoc-setup)
+  (set (make-local-variable 'company-backends)
+       '((company-ac-php-backend company-dabbrev-code)
+         company-capf company-files)))
+(add-hook 'php-mode-hook #'php-mode-hooks)
 (setq php-site-url "https://secure.php.net/"
       php-manual-url 'ja)
 
