@@ -313,8 +313,13 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (defun company-mode-hooks ()
   "Hooks for company-mode."
+  ;; enable quickhelp
+  (company-quickhelp-local-mode t)
   ;; define keymap
   (define-key company-mode-map (kbd "<C-tab>") 'company-complete)
+  (dolist (keymap (list company-active-map company-search-map))
+    (define-key keymap (kbd "C-n") 'company-select-next)
+    (define-key keymap (kbd "C-p") 'company-select-previous))
   ;; set color
   (set-face-attribute 'company-tooltip nil
                       :foreground "black" :background "lightgrey")
