@@ -428,6 +428,17 @@
   (when use-enh-ruby
     (add-hook 'enh-ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)))
 
+;; lsp-mode
+;;(add-hook 'rust-mode-hook 'lsp-deferred)
+(add-hook 'go-mode-hook 'lsp-deferred) ; gopls required. $ go get -u golang.org/x/tools/cmd/gopls
+
+;; lsp-ui
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+;; company-lsp
+(when (require 'company-lsp nil t)
+  (push 'company-lsp company-backends))
+
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
   (when (file-exists-p local-file)
