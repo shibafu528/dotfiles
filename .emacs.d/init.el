@@ -50,7 +50,6 @@
 ;; helm
 (require 'helm-config)
 (helm-mode t)
-(customize-set-variable 'helm-ff-lynx-style-map t)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -344,6 +343,7 @@
              "node_modules")
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'helm)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
 ;; git-complete
@@ -392,7 +392,12 @@
   (setq ruby-indent-level 2
         ruby-indent-tabs-mode nil
         ruby-deep-indent-paren-style nil
-        ruby-insert-encoding-magic-comment nil))
+        ruby-insert-encoding-magic-comment nil)
+  ;; rubocopでのflycheckは .rubocop.yml が配置されているプロジェクトに限定する
+  (if (and (projectile-project-p)
+           (file-exists-p (projectile-expand-root ".rubocop.yml")))
+      (delete 'flycheck-disabled-checkers 'ruby-rubocop)
+    (add-to-list 'flycheck-disabled-checkers 'ruby-rubocop)))
 (setq use-enh-ruby nil)
 (cond ((executable-find "ruby")
        ;; Rubyがあればenh-ruby-modeに頼る
@@ -432,6 +437,8 @@
 ;; lsp-mode
 ;;(add-hook 'rust-mode-hook 'lsp-deferred)
 (add-hook 'go-mode-hook 'lsp-deferred) ; gopls required. $ go get -u golang.org/x/tools/cmd/gopls
+(add-hook 'ruby-mode-hook 'lsp-deferred)
+(add-hook 'enh-ruby-mode-hook 'lsp-deferred)
 
 ;; lsp-ui
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
