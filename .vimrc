@@ -1,6 +1,8 @@
 syntax on
 
 set nocompatible
+set nobackup
+set noundofile
 
 set number
 set nowrap
