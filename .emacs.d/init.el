@@ -14,6 +14,8 @@
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
+(require 'benchmark-init)
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
 (unless package-archive-contents (package-refresh-contents))
 (dolist (pkg package-selected-packages)
   (unless (package-installed-p pkg)
@@ -425,14 +427,14 @@
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
 
 ;; mikutter-mode
+(autoload 'mikutter-mode "mikutter" :interactive t)
 (defun turn-on-mikutter-mode-in-mikutter-dir ()
   (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
       (mikutter-mode)))
-(when (require 'mikutter nil t)
-  (setq mikutter:dir "~/git/mikutter/")
-  ;; enh-ruby-modeを使う環境の場合、フック設定が必要 (内容はmikutter.elのコピペ)
-  (when use-enh-ruby
-    (add-hook 'enh-ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)))
+(setq mikutter:dir "~/git/mikutter/")
+;; enh-ruby-modeを使う環境の場合、フック設定が必要 (内容はmikutter.elのコピペ)
+(when use-enh-ruby
+  (add-hook 'enh-ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir))
 
 ;; lsp-mode
 ;;(add-hook 'rust-mode-hook 'lsp-deferred) ; rls required. $ rustup component add rls rust-analysis rust-src
@@ -444,8 +446,9 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 ;; company-lsp
-(when (require 'company-lsp nil t)
-  (push 'company-lsp company-backends))
+(with-eval-after-load 'lsp-mode
+  (when (require 'company-lsp nil t)
+    (push 'company-lsp company-backends)))
 
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
