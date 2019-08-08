@@ -14,12 +14,14 @@
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
-(require 'benchmark-init)
-(add-hook 'after-init-hook 'benchmark-init/deactivate)
 (unless package-archive-contents (package-refresh-contents))
 (dolist (pkg package-selected-packages)
   (unless (package-installed-p pkg)
     (package-install pkg)))
+
+;; benchmark
+(require 'benchmark-init)
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 ;; load path
 (let ((user-lisp-dir (expand-file-name "elisp/" user-emacs-directory)))
