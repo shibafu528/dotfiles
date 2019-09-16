@@ -248,6 +248,9 @@
 (setq neo-smart-open t)
 (setq neo-show-hidden-files t)
 
+;; imenu-tree
+(autoload 'imenu-tree "imenu-tree" :interactive t)
+
 ;; GUI用設定
 (when window-system
   ;; frame title
