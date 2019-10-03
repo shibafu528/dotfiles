@@ -51,16 +51,14 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; helm
-(require 'helm-config)
-(helm-mode t)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z") 'helm-select-action)
+;; ivy
+(ivy-mode t)
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-x b") 'counsel-switch-buffer)
+(global-set-key (kbd "C-x C-b") 'counsel-recentf)
 
 ;; タブ文字を使わない
 (setq-default indent-tabs-mode nil)
@@ -138,9 +136,10 @@
 
 ;; yasnippet
 (require 'yasnippet)
-(when (require 'helm-c-yasnippet nil t)
-  (setq helm-yas-space-match-any-greedy t)
-  (global-set-key (kbd "C-c y") 'helm-yas-complete))
+;; 忘れた、何用だっけ？
+;; (when (require 'helm-c-yasnippet nil t)
+;;   (setq helm-yas-space-match-any-greedy t)
+;;   (global-set-key (kbd "C-c y") 'helm-yas-complete))
 (define-key yas-minor-mode-map (kbd "C-c i i") 'yas-insert-snippet)
 (define-key yas-minor-mode-map (kbd "C-c i n") 'yas-new-snippet)
 (define-key yas-minor-mode-map (kbd "C-c i v") 'yas-visit-snippet-file)
@@ -233,7 +232,7 @@
 (when (require 'diminish nil t)
   (require 'safe-diminish)
   (safe-diminish "company" 'company-mode)
-  (safe-diminish "helm-mode" 'helm-mode)
+  (safe-diminish "ivy-mode" 'ivy-mode)
   (safe-diminish "smart-cursor-color" 'smart-cursor-color-mode)
   (safe-diminish "undo-tree" 'undo-tree-mode)
   (safe-diminish "which-key" 'which-key-mode)
@@ -349,7 +348,7 @@
 (add-to-list 'projectile-globally-ignored-directories
              "node_modules")
 (setq projectile-enable-caching t)
-(setq projectile-completion-system 'helm)
+(setq projectile-completion-system 'ivy)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
