@@ -26,6 +26,7 @@ alias dcon='docker-compose'
 alias dcond='docker-compose down'
 alias dconu='docker-compose up -d'
 alias dconl='docker-compose logs -f'
+alias unzip='unzip -Ocp932'
 
 autoload -Uz compinit promptinit
 autoload -U colors && colors

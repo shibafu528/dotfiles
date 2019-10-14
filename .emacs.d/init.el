@@ -469,8 +469,8 @@
         lsp-ui-sideline-show-symbol nil
         lsp-ui-sideline-show-diagnostics nil)
   ;; keymap
-  (define-key 'lsp-ui-mode-map (kbd "C-c l d") 'toggle-lsp-ui-doc)
-  (define-key 'lsp-ui-mode-map (kbd "C-c l s") 'lsp-ui-sideline-mode))
+  (define-key lsp-ui-mode-map (kbd "C-c l d") 'toggle-lsp-ui-doc)
+  (define-key lsp-ui-mode-map (kbd "C-c l s") 'lsp-ui-sideline-mode))
 (add-hook 'lsp-ui-mode-hook 'lsp-ui-mode-hooks)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
