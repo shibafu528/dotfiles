@@ -4,3 +4,6 @@
 [submodule ".emacs.d/elisp/git-complete"]
 	path = .emacs.d/elisp/git-complete
 	url = https://github.com/zk-phi/git-complete
+[submodule "git-recent"]
+	path = git-recent
+	url = https://github.com/paulirish/git-recent.git
