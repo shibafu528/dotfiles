@@ -352,6 +352,9 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
 
+;; projectile-rails
+(projectile-rails-global-mode)
+
 ;; git-complete
 (when (require 'git-complete)
   (global-set-key (kbd "C-c C-o") 'git-complete))
