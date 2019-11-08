@@ -407,20 +407,9 @@
            (file-exists-p (projectile-expand-root ".rubocop.yml")))
       (delete 'flycheck-disabled-checkers 'ruby-rubocop)
     (add-to-list 'flycheck-disabled-checkers 'ruby-rubocop)))
-(setq use-enh-ruby nil)
-(cond ((executable-find "ruby")
-       ;; Rubyがあればenh-ruby-modeに頼る
-       (add-hook 'enh-ruby-mode-hook 'ruby-mode-hooks)
-       (add-hook 'enh-ruby-mode-hook #'ruby-electric-mode)
-       (add-hook 'enh-ruby-mode-hook 'yard-mode)
-       (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-       (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
-       (setq use-enh-ruby t))
-      (t
-       ;; ない環境ではruby-modeの設定を行う
-       (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
-       (add-hook 'ruby-mode-hook #'ruby-electric-mode)
-       (add-hook 'ruby-mode-hook 'yard-mode)))
+(add-hook 'ruby-mode-hook 'ruby-mode-hooks)
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+(add-hook 'ruby-mode-hook 'yard-mode)
 
 ;; rainbow-delimiters-mode
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -439,9 +428,6 @@
   (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
       (mikutter-mode)))
 (setq mikutter:dir "~/git/mikutter/")
-;; enh-ruby-modeを使う環境の場合、フック設定が必要 (内容はmikutter.elのコピペ)
-(when use-enh-ruby
-  (add-hook 'enh-ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir))
 
 ;; lsp-mode
 (defun lsp-mode-hooks ()
