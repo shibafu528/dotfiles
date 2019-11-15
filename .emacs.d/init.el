@@ -298,6 +298,13 @@
 
 ;; magit
 (global-set-key (kbd "C-c g") 'magit-status)
+(setq magit-shortcut-map
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "l") 'magit-log-buffer-file)
+        (define-key map (kbd "b") 'magit-blame)
+        map))
+(fset 'magit-shortcut-map magit-shortcut-map)
+(global-set-key (kbd "C-c m") 'magit-shortcut-map)
 
 ;; git-gutter
 (cond ((>= emacs-major-version 26)
