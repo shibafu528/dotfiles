@@ -232,12 +232,14 @@
 (when (require 'diminish nil t)
   (require 'safe-diminish)
   (safe-diminish "company" 'company-mode)
-  (safe-diminish "ivy-mode" 'ivy-mode)
+  (safe-diminish "ivy" 'ivy-mode)
   (safe-diminish "smart-cursor-color" 'smart-cursor-color-mode)
   (safe-diminish "undo-tree" 'undo-tree-mode)
   (safe-diminish "which-key" 'which-key-mode)
   (safe-diminish "yasnippet" 'yas-minor-mode)
-  (safe-diminish "editorconfig" 'editorconfig-mode))
+  (safe-diminish "editorconfig" 'editorconfig-mode)
+  (safe-diminish "eldoc" 'eldoc-mode)
+  (safe-diminish "git-gutter" 'git-gutter-mode))
 
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
