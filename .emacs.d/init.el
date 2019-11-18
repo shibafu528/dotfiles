@@ -375,7 +375,6 @@
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\(\\.php\\)?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
@@ -388,6 +387,16 @@
 (add-hook 'sgml-mode-hook #'emmet-mode)
 (add-hook 'web-mode-hook #'emmet-mode)
 (add-hook 'emmet-mode-hook #'emmet-mode-hooks)
+
+;; js2-mode
+(defun js2-mode-hooks ()
+  "Hooks for js2 mode."
+  (setq js2-basic-offset 2)
+  (setq js-switch-indent-offset 2))
+(add-hook 'js2-mode-hook 'js2-mode-hooks)
+
+;; rjsx-mode
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
 
 ;; vue-mode
 (add-hook 'vue-mode-hook #'add-node-modules-path)
