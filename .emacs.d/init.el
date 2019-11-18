@@ -437,6 +437,7 @@
   (if (and buffer-file-name (string-match "mikutter" buffer-file-name))
       (mikutter-mode)))
 (setq mikutter:dir "~/git/mikutter/")
+(add-hook 'ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)
 
 ;; lsp-mode
 (defun lsp-mode-hooks ()
