@@ -453,10 +453,19 @@
   "Hooks for lsp-mode."
   (setq lsp-auto-guess-root t))
 (add-hook 'lsp-mode-hook 'lsp-mode-hooks)
-;;(add-hook 'rust-mode-hook 'lsp-deferred) ; rls required. $ rustup component add rls rust-analysis rust-src
-(add-hook 'go-mode-hook 'lsp-deferred) ; gopls required. $ go get -u golang.org/x/tools/cmd/gopls
-(add-hook 'ruby-mode-hook 'lsp-deferred) ; solargraph required. $ gem install solargraph
-(add-hook 'enh-ruby-mode-hook 'lsp-deferred)
+
+;; rls -> $ rustup component add rls rust-analysis rust-src
+;;(add-hook 'rust-mode-hook 'lsp-deferred)
+
+;; gopls -> $ go get -u golang.org/x/tools/cmd/gopls
+(add-hook 'go-mode-hook 'lsp-deferred)
+
+;; solargraph -> $ gem install solargraph
+(add-hook 'ruby-mode-hook 'lsp-deferred)
+;;(add-hook 'enh-ruby-mode-hook 'lsp-deferred)
+
+;; typescript-language-server -> $ yarn global add typescript typescript-language-server
+(add-hook 'js2-mode-hook 'lsp-deferred)
 
 ;; lsp-ui
 (defun toggle-lsp-ui-doc ()
