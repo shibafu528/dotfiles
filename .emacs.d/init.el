@@ -243,7 +243,8 @@
   (safe-diminish "yasnippet" 'yas-minor-mode)
   (safe-diminish "editorconfig" 'editorconfig-mode)
   (safe-diminish "eldoc" 'eldoc-mode)
-  (safe-diminish "git-gutter" 'git-gutter-mode))
+  (safe-diminish "git-gutter" 'git-gutter-mode)
+  (safe-diminish "highlight-indent-guides" 'highlight-indent-guides-mode))
 
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
