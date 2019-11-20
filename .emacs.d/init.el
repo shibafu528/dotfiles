@@ -189,6 +189,10 @@
       (t
        (setq hl-line-face 'underline)))
 
+;; インデントハイライト
+(setq highlight-indent-guides-method 'column) ; fillとcolumnどっちがいいかなあ
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+
 ;; 行列番号表示
 (line-number-mode t)
 (column-number-mode t)
