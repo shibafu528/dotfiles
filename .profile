@@ -11,6 +11,7 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init -)"
