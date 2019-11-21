@@ -97,11 +97,6 @@
   (global-set-key (kbd "M-[") 'point-undo)
   (global-set-key (kbd "M-]") 'point-redo))
 
-;; color-moccur, moccur-edit
-(when (require 'color-moccur nil t)
-  (setq moccur-split-word t)
-  (require 'moccur-edit nil t))
-
 ;; wgrep
 (require 'wgrep nil t)
 
