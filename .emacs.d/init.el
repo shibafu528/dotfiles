@@ -97,9 +97,6 @@
   (global-set-key (kbd "M-[") 'point-undo)
   (global-set-key (kbd "M-]") 'point-redo))
 
-;; wgrep
-(require 'wgrep nil t)
-
 ;; which-key
 (which-key-setup-side-window-right-bottom)
 (which-key-mode t)
