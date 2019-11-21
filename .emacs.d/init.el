@@ -244,7 +244,8 @@
   (safe-diminish "editorconfig" 'editorconfig-mode)
   (safe-diminish "eldoc" 'eldoc-mode)
   (safe-diminish "git-gutter" 'git-gutter-mode)
-  (safe-diminish "highlight-indent-guides" 'highlight-indent-guides-mode))
+  (safe-diminish "highlight-indent-guides" 'highlight-indent-guides-mode)
+  (safe-diminish "projectile-rails" 'projectile-rails-mode))
 
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
@@ -310,6 +311,10 @@
         map))
 (fset 'magit-shortcut-map magit-shortcut-map)
 (global-set-key (kbd "C-c m") 'magit-shortcut-map)
+(with-eval-after-load "magit-blame"
+  (let ((margin (assoc 'margin magit-blame-styles)))
+    (delete margin magit-blame-styles)
+    (add-to-list 'magit-blame-styles margin)))
 
 ;; git-gutter
 (cond ((>= emacs-major-version 26)
