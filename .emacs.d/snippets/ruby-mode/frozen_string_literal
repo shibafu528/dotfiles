@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: frozen_string_literal
+# key: #f
+# --
+# frozen_string_literal: true
