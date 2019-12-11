@@ -33,6 +33,12 @@
 ;; default charset
 (prefer-coding-system 'utf-8)
 
+;; transpose系のキーバインドを滅ぼす
+(global-unset-key (kbd "C-t")) ; transpose-chars
+(global-unset-key (kbd "M-t")) ; transpose-words
+(global-unset-key (kbd "C-M-t")) ; transpose-sexps
+(global-unset-key (kbd "C-x C-t")) ; transpose-lines
+
 ;; saveplace
 (if (>= emacs-major-version 25)
     (save-place-mode 1)
