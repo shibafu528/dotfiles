@@ -284,14 +284,22 @@
   (powerline-default-theme))
 
 ;; org-mode
+;; TODO: Dropbox送りにするのもあり
+(setq org-default-notes-file (expand-file-name "inbox.org" user-emacs-directory))
+(setq org-agenda-files (list org-default-notes-file))
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 (with-eval-after-load 'org
-    (when window-system
-      (let ((block-bg "#1F262E"))
-        (set-face-background 'org-block-begin-line block-bg)
-        (set-face-background 'org-block-end-line block-bg)
-        (set-face-background 'org-block block-bg))
-      (setq org-src-fontify-natively t)
-      (setq org-fontify-quote-and-verse-blocks t)))
+  (when window-system
+    (let ((block-bg "#1F262E"))
+      (set-face-background 'org-block-begin-line block-bg)
+      (set-face-background 'org-block-end-line block-bg)
+      (set-face-background 'org-block block-bg))
+    (setq org-src-fontify-natively t)
+    (setq org-fontify-quote-and-verse-blocks t))
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox")
+           "* TODO %?"))))
 
 ;;; コーディング支援
 ;; flycheck
