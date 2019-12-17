@@ -301,6 +301,14 @@
         '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox")
            "* TODO %?"))))
 
+;; region-bindings-mode
+(require 'region-bindings-mode)
+(region-bindings-mode-enable)
+
+;; expand-region
+(with-eval-after-load 'region-bindings-mode
+  (define-key region-bindings-mode-map (kbd "C-SPC") 'er/expand-region))
+
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -468,7 +476,8 @@
 (add-hook 'ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)
 
 ;; Language Server Protocol
-(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
+;;(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
+(load (expand-file-name "init-eglot.el" user-emacs-directory))
 
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
