@@ -4,5 +4,7 @@
 !/elisp/*.el
 !/snippets
 !/init.el
+!/init-eglot.el
+!/init-lsp-mode.el
 !/custom.el
 !/.gitignore
