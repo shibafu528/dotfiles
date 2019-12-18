@@ -447,10 +447,13 @@
         ruby-indent-tabs-mode nil
         ruby-deep-indent-paren-style nil
         ruby-insert-encoding-magic-comment nil)
-  ;; rubocopでのflycheckは .rubocop.yml が配置されているプロジェクトに限定する
+  ;; rubocopに関する設定
+  (make-local-variable 'flycheck-disabled-checkers)
   (if (and (projectile-project-p)
            (file-exists-p (projectile-expand-root ".rubocop.yml")))
-      (delete 'flycheck-disabled-checkers 'ruby-rubocop)
+      ;; 保存時にauto-correctする
+      (rubocopfmt-mode t)
+    ;; .rubocop.ymlが設置されていないプロジェクトでは、flycheckでrubocopを使わない
     (add-to-list 'flycheck-disabled-checkers 'ruby-rubocop)))
 (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
