@@ -309,6 +309,9 @@
 (with-eval-after-load 'region-bindings-mode
   (define-key region-bindings-mode-map (kbd "C-SPC") 'er/expand-region))
 
+;; copy-file-name-to-clipboard
+(autoload 'copy-file-name-to-clipboard "copy-file-name-to-clipboard" :interactive t)
+
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
