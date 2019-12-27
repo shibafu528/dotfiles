@@ -312,6 +312,11 @@
 ;; copy-file-name-to-clipboard
 (autoload 'copy-file-name-to-clipboard "copy-file-name-to-clipboard" :interactive t)
 
+;; bm
+(global-set-key (kbd "<pause>") 'bm-toggle)
+(global-set-key (kbd "C-<prior>") 'bm-previous)
+(global-set-key (kbd "C-<next>") 'bm-next)
+
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
