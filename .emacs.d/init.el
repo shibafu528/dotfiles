@@ -242,8 +242,7 @@
   (safe-diminish "editorconfig" 'editorconfig-mode)
   (safe-diminish "eldoc" 'eldoc-mode)
   (safe-diminish "git-gutter" 'git-gutter-mode)
-  (safe-diminish "highlight-indent-guides" 'highlight-indent-guides-mode)
-  (safe-diminish "projectile-rails" 'projectile-rails-mode))
+  (safe-diminish "highlight-indent-guides" 'highlight-indent-guides-mode))
 
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
@@ -400,9 +399,6 @@
 (setq projectile-completion-system 'ivy)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (global-set-key (kbd "C-c p s i") 'projectile-ripgrep)
-
-;; projectile-rails
-(projectile-rails-global-mode)
 
 ;; git-complete
 (when (require 'git-complete)
