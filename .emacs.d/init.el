@@ -292,7 +292,9 @@
 (setq org-default-notes-file (expand-file-name "inbox.org" user-emacs-directory))
 (setq org-agenda-files (list org-default-notes-file))
 (global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "<hiragana-katakana>") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-<hiragana-katakana>") 'org-capture)
 (with-eval-after-load 'org
   (when window-system
     (let ((block-bg "#1F262E"))
