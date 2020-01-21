@@ -333,6 +333,7 @@
 
 ;; magit
 (global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "<muhenkan>") 'magit-status)
 (setq magit-shortcut-map
       (let ((map (make-sparse-keymap)))
         (define-key map (kbd "l") 'magit-log-buffer-file)
@@ -490,6 +491,16 @@
 ;; Language Server Protocol
 ;;(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
 (load (expand-file-name "init-eglot.el" user-emacs-directory))
+
+;; それなりに使うコマンドのショートカット
+(setq usual-shortcut-map
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "i") 'projectile-ripgrep)
+        (define-key map (kbd "f") 'projectile-find-file)
+        (define-key map (kbd "r") 'ripgrep-regexp)
+        map))
+(fset 'usual-shortcut-map usual-shortcut-map)
+(global-set-key (kbd "<henkan>") 'usual-shortcut-map)
 
 ;;; 環境別の設定
 (let ((local-file (expand-file-name "init-local.el" user-emacs-directory)))
