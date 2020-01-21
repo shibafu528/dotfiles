@@ -128,6 +128,7 @@
 ;; SKK
 (setq skk-user-directory (expand-file-name "ddskk/" user-emacs-directory))
 (setq default-input-method "japanese-skk")
+(setq skk-egg-like-newline t)
 (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
 (with-eval-after-load 'skk
   (require 'skk-study))
