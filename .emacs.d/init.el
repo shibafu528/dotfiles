@@ -432,7 +432,8 @@
 (defun js2-mode-hooks ()
   "Hooks for js2 mode."
   (setq js2-basic-offset 2)
-  (setq js-switch-indent-offset 2))
+  (setq js-switch-indent-offset 2)
+  (setq js2-strict-missing-semi-warning nil))
 (add-hook 'js2-mode-hook 'js2-mode-hooks)
 
 ;; rjsx-mode
