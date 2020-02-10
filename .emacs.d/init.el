@@ -478,6 +478,7 @@
 
 ;; adoc-mode
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+(add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
 
 ;; rust-mode
 (add-hook 'rust-mode-hook #'cargo-minor-mode)
