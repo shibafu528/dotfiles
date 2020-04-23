@@ -29,6 +29,10 @@
   (let ((default-directory user-lisp-dir))
     (normal-top-level-add-subdirs-to-load-path)))
 
+;; PATHをどうにかする
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;;; 振る舞いの設定
 ;; default charset
 (prefer-coding-system 'utf-8)
