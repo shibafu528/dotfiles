@@ -43,9 +43,10 @@
 (global-unset-key (kbd "C-M-t")) ; transpose-sexps
 (global-unset-key (kbd "C-x C-t")) ; transpose-lines
 
-;; macOSでバックスラッシュが打ちたい
+;; macOS向けのModifierリマップ
 (when (memq window-system '(mac ns))
-  (global-set-key (kbd "M-¥") (kbd "\\")))
+  (setq ns-command-modifier 'meta)
+  (setq ns-alternate-modifier 'option))
 
 ;; saveplace
 (if (>= emacs-major-version 25)
