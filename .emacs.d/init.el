@@ -43,6 +43,10 @@
 (global-unset-key (kbd "C-M-t")) ; transpose-sexps
 (global-unset-key (kbd "C-x C-t")) ; transpose-lines
 
+;; macOSでバックスラッシュが打ちたい
+(when (memq window-system '(mac ns))
+  (global-set-key (kbd "M-¥") (kbd "\\")))
+
 ;; saveplace
 (if (>= emacs-major-version 25)
     (save-place-mode 1)
