@@ -284,13 +284,26 @@
                 default-frame-alist))
   (setq initial-frame-alist default-frame-alist)
   ;; font
-  (let ((fonts (font-family-list)))
-    (cond ((member "Migu 1M" fonts)
-           (set-face-attribute 'default nil :family "Migu 1M" :height 120))
-          ((member "VL ゴシック" fonts)
-           (set-face-attribute 'default nil :family "VL ゴシック" :height 120))
-          ((member "ＭＳ ゴシック" fonts)
-           (set-face-attribute 'default nil :family "ＭＳ ゴシック" :height 120))))
+  (let ((fonts (font-family-list))
+        (candidate-fonts '("Migu 1M" "VL ゴシック" "ＭＳ ゴシック"))
+        (recognized-font nil))
+    (setq recognized-font
+          (catch 'recognized
+            (dolist (candidate-font candidate-fonts)
+              (if (member candidate-font fonts)
+                  (throw 'recognized candidate-font)))))
+    (when recognized-font
+      (set-face-attribute 'default nil :family recognized-font :height 120)
+      ;; Macだと真面目にこの辺やらないと中華になっちゃうんだけど、OS問わずやっていいかも?
+      (when (memq window-system '(mac ns))
+        (let ((fontspec (font-spec :family recognized-font))
+              (jp-characters '(katakana-jisx0201
+                               cp932-2-byte
+                               japanese-jisx0212
+                               japanese-jisx0213-2
+                               japanese-jisx0213.2004-1)))
+          (dolist (jp-character jp-characters)
+            (set-fontset-font nil jp-character fontspec))))))
   ;; theme
   (load-theme 'misterioso t)
   ;; powerline
