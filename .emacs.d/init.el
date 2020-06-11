@@ -273,9 +273,7 @@
 (when window-system
   ;; frame title
   (setq frame-title-format
-        (if (buffer-file-name)
-            "%f"
-          "%b"))
+        '(:eval (if (buffer-file-name) "%f" "%b")))
   ;; frame size
   (setq default-frame-alist
         (append (list
