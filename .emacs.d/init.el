@@ -346,6 +346,12 @@
 (global-set-key (kbd "C-<prior>") 'bm-previous)
 (global-set-key (kbd "C-<next>") 'bm-next)
 
+;; shell-mode
+(defun shell-mode-hooks()
+  "Hooks for shell-mode."
+  (display-line-numbers-mode -1))
+(add-hook 'shell-mode-hook 'shell-mode-hooks)
+
 ;;; コーディング支援
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -441,6 +447,7 @@
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 
 ;; emmet-mode
 (defun emmet-mode-hooks ()
