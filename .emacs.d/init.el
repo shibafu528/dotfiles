@@ -309,7 +309,7 @@
 
 ;; org-mode
 ;; TODO: Dropbox送りにするのもあり
-(setq org-todo-keywords '((sequence "TODO" "WAITING" "PENDING" "DONE")))
+(setq org-todo-keywords '((sequence "TODO" "DOING" "WAITING" "PENDING" "DONE")))
 (setq org-default-notes-file (expand-file-name "inbox.org" user-emacs-directory))
 (setq org-agenda-files (list org-default-notes-file))
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -465,6 +465,7 @@
 
 ;; rjsx-mode
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
+(add-hook 'rjsx-mode-hook #'add-node-modules-path)
 
 ;; vue-mode
 (add-hook 'vue-mode-hook #'add-node-modules-path)
