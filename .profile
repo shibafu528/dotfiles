@@ -16,6 +16,7 @@ export PATH="/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/perl5/bin:$PATH"
+export PATH="$HOME/.symfony/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init -)"
