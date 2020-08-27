@@ -330,6 +330,7 @@
 
 ;; region-bindings-mode
 (require 'region-bindings-mode)
+(setq region-bindings-mode-disabled-modes '(org-mode))
 (region-bindings-mode-enable)
 
 ;; expand-region
