@@ -330,6 +330,7 @@
 
 ;; region-bindings-mode
 (require 'region-bindings-mode)
+(setq region-bindings-mode-disabled-modes '(org-mode))
 (region-bindings-mode-enable)
 
 ;; expand-region
@@ -349,6 +350,12 @@
   "Hooks for shell-mode."
   (display-line-numbers-mode -1))
 (add-hook 'shell-mode-hook 'shell-mode-hooks)
+
+;; dired-mode
+(defun dired-mode-hooks()
+  "Hooks for dired-mode."
+  (display-line-numbers-mode -1))
+(add-hook 'dired-mode-hook 'dired-mode-hooks)
 
 ;;; コーディング支援
 ;; flycheck

@@ -9,6 +9,7 @@ export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
 
 export PATH="$HOME/bin:$PATH"
 export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
