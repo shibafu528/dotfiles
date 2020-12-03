@@ -7,3 +7,18 @@
 [submodule "git-recent"]
 	path = git-recent
 	url = https://github.com/paulirish/git-recent.git
+[submodule "skk-jisyo/skk-dict-imascg"]
+	path = skk-jisyo/skk-dict-imascg
+	url = https://github.com/project-brightblue/skk-dict-imascg.git
+[submodule "skk-jisyo/skk-emoji-jisyo"]
+	path = skk-jisyo/skk-emoji-jisyo
+	url = https://github.com/uasi/skk-emoji-jisyo
+[submodule "skk-jisyo/skk-vocaloid-dic"]
+	path = skk-jisyo/skk-vocaloid-dic
+	url = https://github.com/rinsuki/skk-vocaloid-dic.git
+[submodule "skk-jisyo/kb10uy"]
+	path = skk-jisyo/kb10uy
+	url = https://gist.github.com/kb10uy/838c221cb14c47939582010f0ec56cc4.git
+[submodule "skk-jisyo/pjsekai"]
+	path = skk-jisyo/pjsekai
+	url = git@gist.github.com:700c558f4c17c37935451cb02d8629d3.git

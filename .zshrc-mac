@@ -1,0 +1,24 @@
+eval "$(rbenv init -)"
+eval "$(nodenv init -)"
+
+alias la='ls -a'
+alias ll='la -l'
+alias xc='xclip -i -selection clipboard'
+alias ga='git add'
+alias gb='git branch'
+alias gs='git status'
+alias gl='git log --decorate --graph'
+alias gd='git diff'
+alias gc='git commit'
+alias gch='git checkout'
+alias winerpg='WINEPREFIX=~/.wine/rpg_rt wine'
+alias steam-wine='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Steam/Steam.exe -no-dwrite >/dev/null 2>&1 &'
+alias be='bundle exec'
+alias ber='bundle exec ruby'
+alias dcon='docker-compose'
+alias dcond='docker-compose down'
+alias dconu='docker-compose up -d'
+alias dconl='docker-compose logs -f'
+alias unzip='unzip -Ocp932'
+
+
