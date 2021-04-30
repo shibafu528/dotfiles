@@ -1,5 +1,6 @@
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
+type phpenv &> /dev/null && eval "$(phpenv init -)"
 
 alias la='ls -a'
 alias ll='la -l'
@@ -21,4 +22,11 @@ alias dconu='docker-compose up -d'
 alias dconl='docker-compose logs -f'
 alias unzip='unzip -Ocp932'
 
+alias abrew='/opt/homebrew/bin/brew'
+alias ibrew='/opt/intelbrew/bin/brew'
 
+alias x64='arch -x86_64'
+alias arm='arch -arm64'
+alias arme='arch -arm64e'
+
+export PROMPT="$(uname -m)) %n@%m %1~ %# "
