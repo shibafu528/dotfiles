@@ -211,7 +211,8 @@
 (setq eol-mnemonic-unix "(LF)")
 
 ;; 各種UI要素の非表示
-(menu-bar-mode 0)
+(unless (memq window-system '(mac ns)) ; macOSなら邪魔じゃないから許す
+  (menu-bar-mode 0))
 (tool-bar-mode 0)
 
 ;; 行番号表示
