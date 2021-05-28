@@ -293,6 +293,7 @@
                   (throw 'recognized candidate-font)))))
     (when recognized-font
       (set-face-attribute 'default nil :family recognized-font :height 120)
+      (set-face-attribute 'fixed-pitch nil :family recognized-font :height 120)
       ;; Macだと真面目にこの辺やらないと中華になっちゃうんだけど、OS問わずやっていいかも?
       (when (memq window-system '(mac ns))
         (let ((fontspec (font-spec :family recognized-font))
