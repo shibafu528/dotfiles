@@ -392,9 +392,9 @@
         '(git-gutter:modified-sign " ")
         '(git-gutter:added-sign " ")
         '(git-gutter:deleted-sign " "))
-       (set-face-background 'git-gutter:modified "purple")
-       (set-face-background 'git-gutter:added "green")
-       (set-face-background 'git-gutter:deleted "red"))
+       (set-face-background 'git-gutter:modified "purple1")
+       (set-face-background 'git-gutter:added "green3")
+       (set-face-background 'git-gutter:deleted "red3"))
       ((window-system)
        ;; 25.3まではGUI環境下であればgit-gutter-fringeを使用
        ;; (CUIの場合、fringeが使えずnlinumと干渉するので諦める)
