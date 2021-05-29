@@ -48,8 +48,3 @@
   (define-key lsp-ui-mode-map (kbd "C-c l s") 'lsp-ui-sideline-mode))
 (add-hook 'lsp-ui-mode-hook 'lsp-ui-mode-hooks)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-
-;; company-lsp
-(with-eval-after-load 'lsp-mode
-  (when (require 'company-lsp nil t)
-    (push 'company-lsp company-backends)))
