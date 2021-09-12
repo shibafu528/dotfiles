@@ -330,14 +330,8 @@
         '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox")
            "* TODO %?"))))
 
-;; region-bindings-mode
-(require 'region-bindings-mode)
-(setq region-bindings-mode-disabled-modes '(org-mode))
-(region-bindings-mode-enable)
-
 ;; expand-region
-(with-eval-after-load 'region-bindings-mode
-  (define-key region-bindings-mode-map (kbd "C-SPC") 'er/expand-region))
+(global-set-key (kbd "M-<up>") 'er/expand-region)
 
 ;; copy-file-name-to-clipboard
 (autoload 'copy-file-name-to-clipboard "copy-file-name-to-clipboard" :interactive t)
