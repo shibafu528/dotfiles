@@ -314,6 +314,7 @@
 (setq org-todo-keywords '((sequence "TODO" "DOING" "WAITING" "PENDING" "DONE")))
 (setq org-default-notes-file (expand-file-name "inbox.org" user-emacs-directory))
 (setq org-agenda-files (list org-default-notes-file))
+(setq org-adapt-indentation nil)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "<hiragana-katakana>") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
