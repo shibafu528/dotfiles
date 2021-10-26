@@ -518,6 +518,9 @@
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
 
+;; haskell-mode
+(add-hook 'haskell-mode-hook #'interactive-haskell-mode)
+
 ;; mikutter-mode
 (autoload 'mikutter-mode "mikutter" :interactive t)
 (defun turn-on-mikutter-mode-in-mikutter-dir ()
