@@ -520,6 +520,10 @@
 
 ;; haskell-mode
 (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
+(defun haskell-interactive-mode-hooks()
+  "Hooks for haskell-interactive-mode."
+  (display-line-numbers-mode -1))
+(add-hook 'haskell-interactive-mode-hook #'haskell-interactive-mode-hooks)
 
 ;; mikutter-mode
 (autoload 'mikutter-mode "mikutter" :interactive t)
