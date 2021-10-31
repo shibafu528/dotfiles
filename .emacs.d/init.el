@@ -496,10 +496,10 @@
   ;; rubocopに関する設定
   (make-local-variable 'flycheck-disabled-checkers)
   (if (and (projectile-project-p)
-           (file-exists-p (projectile-expand-root ".rubocop.yml"))
-           (not (file-exists-p (projectile-expand-root ".rubocopfmt-disable"))))
-      ;; 保存時にauto-correctする
-      (rubocopfmt-mode t)
+           (file-exists-p (projectile-expand-root ".rubocop.yml")))
+      (if (not (file-exists-p (projectile-expand-root ".rubocopfmt-disable")))
+          ;; 保存時にauto-correctする
+          (rubocopfmt-mode t))
     ;; .rubocop.ymlが設置されていないプロジェクトでは、flycheckでrubocopを使わない
     (add-to-list 'flycheck-disabled-checkers 'ruby-rubocop)))
 (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
