@@ -270,6 +270,10 @@
 ;; imenu-tree
 (autoload 'imenu-tree "imenu-tree" :interactive t)
 
+;; origami
+(global-origami-mode)
+(define-key origami-mode-map (kbd "M-q") 'origami-recursively-toggle-node)
+
 ;; GUI用設定
 (when window-system
   ;; frame title
