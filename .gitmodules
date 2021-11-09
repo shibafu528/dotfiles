@@ -22,3 +22,6 @@
 [submodule "skk-jisyo/pjsekai"]
 	path = skk-jisyo/pjsekai
 	url = git@gist.github.com:700c558f4c17c37935451cb02d8629d3.git
+[submodule ".emacs.d/elisp/phscroll"]
+	path = .emacs.d/elisp/phscroll
+	url = https://github.com/misohena/phscroll.git

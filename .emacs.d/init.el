@@ -315,6 +315,7 @@
 
 ;; org-mode
 ;; TODO: Dropbox送りにするのもあり
+(setq org-startup-truncated nil)
 (setq org-todo-keywords '((sequence "TODO" "DOING" "WAITING" "PENDING" "DONE")))
 (setq org-default-notes-file (expand-file-name "inbox.org" user-emacs-directory))
 (setq org-agenda-files (list org-default-notes-file))
@@ -334,6 +335,11 @@
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox")
            "* TODO %?"))))
+(require 'org-phscroll) ; 行折返し有効にしても表だけ横スクロールさせる
+(defun org-mode-hooks ()
+  "Hooks for org-mode."
+  (display-line-numbers-mode -1))
+(add-hook 'org-mode-hook 'org-mode-hooks)
 
 ;; expand-region
 (global-set-key (kbd "M-<up>") 'er/expand-region)
