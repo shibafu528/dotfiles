@@ -49,10 +49,7 @@
   (setq ns-alternate-modifier 'option))
 
 ;; saveplace
-(if (>= emacs-major-version 25)
-    (save-place-mode 1)
-  (require 'saveplace)
-  (setq-default save-place t))
+(save-place-mode t)
 
 ;; recentf
 (setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
@@ -216,14 +213,8 @@
 (tool-bar-mode 0)
 
 ;; 行番号表示
-(cond ((>= emacs-major-version 26)
-       ;; 26.1以降は標準機能を使用
-       (global-display-line-numbers-mode)
-       (setq-default display-line-numbers-width 4))
-      (t
-       ;; 25.3まではnlinumを使用
-       (global-nlinum-mode t)
-       (setq nlinum-format "%4d ")))
+(global-display-line-numbers-mode)
+(setq-default display-line-numbers-width 4)
 
 ;; ウィンドウ逆順切替
 (defun other-window-reverse ()
@@ -390,21 +381,14 @@
     (add-to-list 'magit-blame-styles margin)))
 
 ;; git-gutter
-(cond ((>= emacs-major-version 26)
-       ;; 26.1以降は通常のgit-gutter-modeを使用
-       (global-git-gutter-mode t)
-       (custom-set-variables
-        '(git-gutter:modified-sign " ")
-        '(git-gutter:added-sign " ")
-        '(git-gutter:deleted-sign " "))
-       (set-face-background 'git-gutter:modified "purple1")
-       (set-face-background 'git-gutter:added "green3")
-       (set-face-background 'git-gutter:deleted "red3"))
-      ((window-system)
-       ;; 25.3まではGUI環境下であればgit-gutter-fringeを使用
-       ;; (CUIの場合、fringeが使えずnlinumと干渉するので諦める)
-       (require 'git-gutter-fringe)
-       (global-git-gutter-mode t)))
+(global-git-gutter-mode t)
+(custom-set-variables
+ '(git-gutter:modified-sign " ")
+ '(git-gutter:added-sign " ")
+ '(git-gutter:deleted-sign " "))
+(set-face-background 'git-gutter:modified "purple1")
+(set-face-background 'git-gutter:added "green3")
+(set-face-background 'git-gutter:deleted "red3")
 
 ;; company
 (setq company-idle-delay 0.5)
