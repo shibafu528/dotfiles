@@ -1,6 +1,9 @@
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 type phpenv &> /dev/null && eval "$(phpenv init -)"
+if [[ -d ~/.ghcup ]]; then
+  source ~/.ghcup/env
+fi
 
 alias la='ls -a'
 alias ll='la -l'
