@@ -238,7 +238,7 @@
 (smart-cursor-color-mode t)
 
 ;; avy
-(global-set-key (kbd "M-g M-g") 'avy-goto-line)
+(global-set-key (kbd "M-g g") 'avy-goto-line)
 (global-set-key (kbd "M-g h") 'avy-goto-char-timer)
 
 ;; diminish
