@@ -18,6 +18,6 @@
 ;;   (add-to-list 'eglot-server-programs '(ruby-mode . (eglot-solargraph "solargraph" "socket" "--port" :autoport))))
 
 ;; typescript-language-server -> $ yarn global add typescript typescript-language-server
-(add-hook 'js2-mode-hook 'eglot-ensure-and-turn-off-flycheck)
+(add-hook 'js-mode-hook 'eglot-ensure-and-turn-off-flycheck)
 (with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs '(js2-mode . ("typescript-language-server" "--stdio"))))
+  (add-to-list 'eglot-server-programs '(js-mode . ("typescript-language-server" "--stdio"))))

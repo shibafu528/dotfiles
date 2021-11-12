@@ -23,7 +23,7 @@
 ;;(add-hook 'enh-ruby-mode-hook 'lsp-deferred)
 
 ;; typescript-language-server -> $ yarn global add typescript typescript-language-server
-(add-hook 'js2-mode-hook 'lsp-deferred)
+(add-hook 'js-mode-hook 'lsp-deferred)
 
 ;; lsp-ui
 (defun toggle-lsp-ui-doc ()

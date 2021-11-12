@@ -456,17 +456,13 @@
 (add-hook 'web-mode-hook #'emmet-mode)
 (add-hook 'emmet-mode-hook #'emmet-mode-hooks)
 
-;; js2-mode
-(defun js2-mode-hooks ()
-  "Hooks for js2 mode."
-  (setq js2-basic-offset 2)
-  (setq js-switch-indent-offset 2)
-  (setq js2-strict-missing-semi-warning nil))
-(add-hook 'js2-mode-hook 'js2-mode-hooks)
-
-;; rjsx-mode
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
-(add-hook 'rjsx-mode-hook #'add-node-modules-path)
+;; js-mode
+(defun js-mode-hooks()
+  "Hooks for js mode."
+  (add-node-modules-path)
+  (setq js-indent-level 2)
+  (setq js-switch-indent-offset 2))
+(add-hook 'js-mode-hook #'js-mode-hooks)
 
 ;; vue-mode
 (add-hook 'vue-mode-hook #'add-node-modules-path)
