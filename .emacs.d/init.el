@@ -60,8 +60,11 @@
 (recentf-mode t)
 
 ;; CUA mode
-(cua-mode t)
-(setq cua-enable-cua-keys nil)
+;; (cua-mode t)
+;; (setq cua-enable-cua-keys nil)
+
+;; リージョンをBackspaceで消せるようにする
+(delete-selection-mode t)
 
 ;; ivy
 (ivy-mode t)
