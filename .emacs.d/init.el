@@ -6,6 +6,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; load path
+(let ((user-lisp-dir (expand-file-name "elisp/" user-emacs-directory)))
+  (add-to-list 'load-path user-lisp-dir)
+  (let ((default-directory user-lisp-dir))
+    (normal-top-level-add-subdirs-to-load-path)))
+
 ;; init package manager
 (require 'package)
 (setq package-archives
@@ -14,7 +20,9 @@
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
-(unless package-archive-contents (package-refresh-contents))
+(if package-archive-contents
+    (require 'package-update-notify)
+  (package-refresh-contents))
 (dolist (pkg package-selected-packages)
   (unless (package-installed-p pkg)
     (package-install pkg)))
@@ -22,12 +30,6 @@
 ;; benchmark
 (require 'benchmark-init)
 (add-hook 'after-init-hook 'benchmark-init/deactivate)
-
-;; load path
-(let ((user-lisp-dir (expand-file-name "elisp/" user-emacs-directory)))
-  (add-to-list 'load-path user-lisp-dir)
-  (let ((default-directory user-lisp-dir))
-    (normal-top-level-add-subdirs-to-load-path)))
 
 ;; PATHをどうにかする
 (when (memq window-system '(mac ns x))
