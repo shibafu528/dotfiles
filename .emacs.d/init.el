@@ -363,6 +363,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defun flycheck-mode-hooks ()
   "Hooks for flycheck-mode."
+  (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc)
   (flycheck-add-mode 'javascript-eslint 'vue-mode)
   (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
   (flycheck-add-mode 'javascript-eslint 'css-mode))
