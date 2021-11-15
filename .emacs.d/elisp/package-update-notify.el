@@ -24,7 +24,15 @@
   "package-update-notify の非同期処理完了後のコールバック。"
   (let ((updates (length (package-available-updates))))
     (when (<= 1 updates)
-      (message "更新可能なパッケージが %d 個あります" updates)))
+      (if (executable-find "notify-send")
+          (start-process "package-update-notify"
+                         nil
+                         "notify-send"
+                         "-a" "Emacs"
+                         "-t" "10000"
+                         "-h" "string:desktop-entry:emacs"
+                         (format "更新可能なパッケージが %d 個あります" updates))
+        (message "更新可能なパッケージが %d 個あります" updates))))
   (remove-hook 'package--post-download-archives-hook 'package-update-notify-callback))
 
 (defun package-update-notify ()
