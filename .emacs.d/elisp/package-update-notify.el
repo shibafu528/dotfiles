@@ -65,7 +65,6 @@
       (add-hook 'package--post-download-archives-hook 'package-update-notify-callback)
       (package-refresh-contents t))))
 
-;; TODO: 毎回起動時に実行するのはアレなので、時々実行するような仕組みを作ってからフックかける
 (add-hook 'emacs-startup-hook 'package-update-notify)
 
 (provide 'package-update-notify)
