@@ -2,11 +2,16 @@
 
 (require 'package)
 
-(defvar package-update-notify-cache (expand-file-name "package-update-notify" user-emacs-directory)
-  "package-update-notifyの実行記録を付けるためのキャッシュファイルの保存先")
+(defgroup package-update-notify nil "パッケージの更新通知の設定"
+  :group 'applications)
 
-(defvar package-update-notify-interval-of-days 7
-  "パッケージの更新を自動確認する間隔 (単位: 日)")
+(defcustom package-update-notify-cache (expand-file-name "package-update-notify" user-emacs-directory)
+  "package-update-notifyの実行記録を付けるためのキャッシュファイルの保存先"
+  :type 'file)
+
+(defcustom package-update-notify-interval-of-days 7
+  "パッケージの更新を自動確認する間隔 (単位: 日)"
+  :type 'integer)
 
 (defun package-update-notify-read-cache ()
   "package-update-notifyの実行記録を読み込む"
