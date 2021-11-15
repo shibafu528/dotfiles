@@ -5,6 +5,9 @@
 (defvar package-update-notify-cache (expand-file-name "package-update-notify" user-emacs-directory)
   "package-update-notifyの実行記録を付けるためのキャッシュファイルの保存先")
 
+(defvar package-update-notify-interval-of-days 7
+  "パッケージの更新を自動確認する間隔 (単位: 日)")
+
 (defun package-update-notify-read-cache ()
   "package-update-notifyの実行記録を読み込む"
   (when (file-exists-p package-update-notify-cache)
@@ -12,6 +15,10 @@
       (insert-file-contents package-update-notify-cache)
       (goto-char (point-min))
       (read (current-buffer)))))
+
+(defun package-update-notify-interval ()
+  "パッケージの更新を自動確認する間隔"
+  (* 60 60 24 package-update-notify-interval-of-days))
 
 (defun package-available-updates ()
   "更新のあるパッケージのリストを作成する。"
@@ -54,7 +61,7 @@
   (let ((last-checked (package-update-notify-read-cache)))
     (when (or (called-interactively-p 'any)
               (not last-checked)
-              (time-less-p (time-add last-checked (* 60 60 24 7)) (current-time)))
+              (time-less-p (time-add last-checked (package-update-notify-interval)) (current-time)))
       (add-hook 'package--post-download-archives-hook 'package-update-notify-callback)
       (package-refresh-contents t))))
 
