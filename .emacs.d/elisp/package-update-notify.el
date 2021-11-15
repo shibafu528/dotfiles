@@ -22,7 +22,8 @@
 (require 'package)
 
 (defgroup package-update-notify nil "パッケージの更新通知の設定"
-  :group 'applications)
+  :group 'applications
+  :prefix "package-update-notify-")
 
 (defcustom package-update-notify-cache (expand-file-name "package-update-notify" user-emacs-directory)
   "package-update-notifyの実行記録を付けるためのキャッシュファイルの保存先"
