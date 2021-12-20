@@ -45,10 +45,14 @@
 (global-unset-key (kbd "C-M-t")) ; transpose-sexps
 (global-unset-key (kbd "C-x C-t")) ; transpose-lines
 
-;; macOS向けのModifierリマップ
+;; macOS対応
 (when (memq window-system '(mac ns))
+  ;; Modifierリマップ
   (setq ns-command-modifier 'meta)
-  (setq ns-alternate-modifier 'option))
+  (setq ns-alternate-modifier 'option)
+  ;; LANGがen_JP.UTF-8とかになっててrubyのflycheckが発狂しがちなので必要
+  ;; https://gongo.hatenablog.com/entry/2016/02/10/092956
+  (setenv "LANG" "ja_JP.UTF-8"))
 
 ;; saveplace
 (save-place-mode t)
