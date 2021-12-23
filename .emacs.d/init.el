@@ -315,7 +315,12 @@
   ;; ivy-posframe
   (require 'ivy-posframe)
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-  (ivy-posframe-mode t))
+  (setq ivy-posframe-lighter nil)
+  (ivy-posframe-mode t)
+  ;; company-posframe
+  (with-eval-after-load 'company
+    (setq company-posframe-lighter nil)
+    (company-posframe-mode t)))
 
 ;; org-mode
 ;; TODO: Dropbox送りにするのもあり
