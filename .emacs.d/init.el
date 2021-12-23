@@ -314,7 +314,9 @@
   (powerline-default-theme)
   ;; ivy-posframe
   (require 'ivy-posframe)
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  (setq ivy-posframe-display-functions-alist
+        '((swiper . ivy-display-function-fallback)
+          (t . ivy-posframe-display)))
   (setq ivy-posframe-lighter nil)
   (ivy-posframe-mode t)
   ;; company-posframe
