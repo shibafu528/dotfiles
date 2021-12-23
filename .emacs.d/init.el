@@ -274,6 +274,11 @@
 (global-origami-mode)
 (define-key origami-mode-map (kbd "M-q") 'origami-recursively-toggle-node)
 
+;; alert
+(cond ((memq window-system '(mac ns)) (setq alert-default-style 'notifier))
+      ((eq window-system 'x) (setq alert-default-style 'libnotify))
+      (t (setq alert-default-style 'message)))
+
 ;; GUI用設定
 (when window-system
   ;; frame title

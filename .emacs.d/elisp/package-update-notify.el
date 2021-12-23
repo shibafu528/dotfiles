@@ -3,6 +3,7 @@
 ;; Copyright (C) 2021  shibafu528
 
 ;; Author: shibafu528
+;; Package-Requires: ((alert "1.2"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,6 +21,7 @@
 ;;; Code:
 
 (require 'package)
+(require 'alert)
 
 (defgroup package-update-notify nil "パッケージの更新通知の設定"
   :group 'applications
@@ -67,15 +69,8 @@
   "package-update-notifyの非同期処理完了後のコールバック。"
   (let ((updates (length (package-available-updates))))
     (when (<= 1 updates)
-      (if (executable-find "notify-send")
-          (start-process "package-update-notify"
-                         nil
-                         "notify-send"
-                         "-a" "Emacs"
-                         "-t" "10000"
-                         "-h" "string:desktop-entry:emacs"
-                         (format "更新可能なパッケージが %d 個あります" updates))
-        (message "更新可能なパッケージが %d 個あります" updates))))
+      (alert (format "更新可能なパッケージが %d 個あります" updates)
+             :title "package-update-notify")))
   (remove-hook 'package--post-download-archives-hook 'package-update-notify-callback)
   (with-temp-file package-update-notify-cache
     (prin1 (current-time) (current-buffer))))
