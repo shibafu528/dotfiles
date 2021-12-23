@@ -5,6 +5,7 @@ set nobackup
 set noundofile
 
 set number
+set relativenumber
 set nowrap
 set cursorline
 
