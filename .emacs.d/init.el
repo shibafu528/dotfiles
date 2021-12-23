@@ -311,7 +311,11 @@
   ;; theme
   (load-theme 'misterioso t)
   ;; powerline
-  (powerline-default-theme))
+  (powerline-default-theme)
+  ;; ivy-posframe
+  (require 'ivy-posframe)
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  (ivy-posframe-mode t))
 
 ;; org-mode
 ;; TODO: Dropbox送りにするのもあり
