@@ -21,7 +21,7 @@
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 (if package-archive-contents
-    (require 'package-update-notify)
+    (add-hook 'after-init-hook (lambda () (require 'package-update-notify)))
   (package-refresh-contents))
 (dolist (pkg package-selected-packages)
   (unless (package-installed-p pkg)
