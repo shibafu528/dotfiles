@@ -258,15 +258,6 @@
 ;; docker
 (global-set-key (kbd "C-c d") 'docker)
 
-;; neotree
-(global-set-key (kbd "C-S-n") 'neotree-toggle)
-(setq neo-smart-open t)
-(setq neo-show-hidden-files t)
-(defun neotree-mode-hooks ()
-  "Hooks for neotree-mode."
-  (display-line-numbers-mode -1))
-(add-hook 'neotree-mode-hook 'neotree-mode-hooks)
-
 ;; imenu-tree
 (autoload 'imenu-tree "imenu-tree" :interactive t)
 
