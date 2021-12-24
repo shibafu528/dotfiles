@@ -12,6 +12,9 @@
   (let ((default-directory user-lisp-dir))
     (normal-top-level-add-subdirs-to-load-path)))
 
+;; "Package cl is deprecated" を出さないようにする
+(setq byte-compile-warnings '(not cl-functions obsolete))
+
 ;; init package manager
 (require 'package)
 (setq package-archives
