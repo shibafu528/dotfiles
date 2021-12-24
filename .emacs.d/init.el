@@ -260,6 +260,12 @@
 
 ;; imenu-tree
 (autoload 'imenu-tree "imenu-tree" :interactive t)
+(global-set-key (kbd "C-S-n") 'imenu-tree)
+(defun imenu-tree-mode-hooks ()
+  "Hooks for imenu-tree-mode."
+  (display-line-numbers-mode -1))
+(with-eval-after-load 'imenu-tree
+  (add-hook 'imenu-tree-mode-hook 'imenu-tree-mode-hooks))
 
 ;; origami
 (global-origami-mode)
