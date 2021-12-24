@@ -80,6 +80,9 @@
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
 (global-set-key (kbd "C-x C-b") 'counsel-recentf)
+(global-set-key (kbd "C-c C-f") 'counsel-fzf)
+(global-set-key (kbd "C-c C-r") 'counsel-rg)
+(global-set-key (kbd "C-x i") 'counsel-imenu)
 
 ;; タブ文字を使わない
 (setq-default indent-tabs-mode nil)
