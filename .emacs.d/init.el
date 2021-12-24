@@ -553,6 +553,10 @@
 (setq mikutter:dir "~/git/mikutter/")
 (add-hook 'ruby-mode-hook #'turn-on-mikutter-mode-in-mikutter-dir)
 
+;; schell-script-mode
+(setq sh-basic-offset 2)
+(setq sh-indentation 2)
+
 ;; Language Server Protocol
 ;;(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
 (load (expand-file-name "init-eglot.el" user-emacs-directory))
