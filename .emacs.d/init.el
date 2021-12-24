@@ -259,6 +259,7 @@
 (global-set-key (kbd "C-c d") 'docker)
 
 ;; imenu-tree
+;; TODO: imenu-listでもいいかも
 (autoload 'imenu-tree "imenu-tree" :interactive t)
 (global-set-key (kbd "C-S-n") 'imenu-tree)
 (defun imenu-tree-mode-hooks ()
