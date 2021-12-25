@@ -318,9 +318,8 @@
           (dolist (jp-character jp-characters)
             (set-fontset-font nil jp-character fontspec))))))
   ;; theme
-  (load-theme 'misterioso t)
-  ;; powerline
-  (powerline-default-theme)
+  (iceberg-theme-create-theme-file)
+  (load-theme 'solarized-iceberg-dark t)
   ;; ivy-posframe
   (require 'ivy-posframe)
   (setq ivy-posframe-display-functions-alist
