@@ -68,10 +68,6 @@
 (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
 (recentf-mode t)
 
-;; CUA mode
-;; (cua-mode t)
-;; (setq cua-enable-cua-keys nil)
-
 ;; リージョンをBackspaceで消せるようにする
 (delete-selection-mode t)
 
