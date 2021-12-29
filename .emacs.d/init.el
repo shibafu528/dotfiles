@@ -490,6 +490,28 @@
   (setq js-switch-indent-offset 2))
 (add-hook 'js-mode-hook #'js-mode-hooks)
 
+;; typescript-mode
+;; For M1: download some binaries manually
+;; 1. Download tsc-dyn.aarch64-apple-darwin.dylib
+;;    https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/88#issuecomment-991636497
+;; 2. Copy into tsc.el directory
+;;    cp -f tsc-dyn.aarch64-apple-darwin.dylib ~/.emacs.d/elpa/tsc-<version>/tsc-dyn.dylib
+;; 3. Ignore gatekeeper
+;;    xattr -d com.apple.quarantine ~/.emacs.d/elpa/tsc-<version>/tsc-dyn.dylib
+;; 4. Download tree-sitter-grammars.x86_64-apple-darwin.v<version>.tar.gz
+;;    https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/88#issuecomment-993642915
+;; 5. Copy contents into tree-sitter-langs/bin
+;;    cp -f tree-sitter-grammars/* ~/.emacs.d/elpa/tree-sitter-langs-<version>/bin/
+;; 6. Ignore gatekeeper
+;;    xattr -d com.apple.quarantine ~/.emacs.d/elpa/tree-sitter-langs-<version>/bin/*.dylib
+(define-derived-mode typescript-tsx-mode typescript-mode "tsx")
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-tsx-mode))
+(add-hook 'typescript-mode-hook 'tree-sitter-hl-mode)
+(add-hook 'typescript-tsx-mode-hook 'tree-sitter-hl-mode)
+(with-eval-after-load 'tree-sitter
+  (tree-sitter-require 'tsx)
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-mode . tsx)))
+
 ;; vue-mode
 (add-hook 'vue-mode-hook #'add-node-modules-path)
 
