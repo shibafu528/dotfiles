@@ -402,6 +402,8 @@
         map))
 (fset 'magit-shortcut-map magit-shortcut-map)
 (global-set-key (kbd "C-c m") 'magit-shortcut-map)
+(if (executable-find "delta")
+    (add-hook 'magit-mode-hook 'magit-delta-mode))
 (with-eval-after-load "magit-blame"
   (let ((margin (assoc 'margin magit-blame-styles)))
     (delete margin magit-blame-styles)
