@@ -47,6 +47,8 @@
 (global-unset-key (kbd "M-t")) ; transpose-words
 (global-unset-key (kbd "C-M-t")) ; transpose-sexps
 (global-unset-key (kbd "C-x C-t")) ; transpose-lines
+(when window-system
+  (global-unset-key (kbd "C-z"))) ; suspend-frame
 
 ;; macOS対応
 (when (memq window-system '(mac ns))
