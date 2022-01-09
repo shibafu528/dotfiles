@@ -579,8 +579,8 @@
 (setq sh-indentation 2)
 
 ;; Language Server Protocol
-;;(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
-(load (expand-file-name "init-eglot.el" user-emacs-directory))
+(load (expand-file-name "init-lsp-mode.el" user-emacs-directory))
+;;(load (expand-file-name "init-eglot.el" user-emacs-directory))
 
 ;; それなりに使うコマンドのショートカット
 (setq usual-shortcut-map
