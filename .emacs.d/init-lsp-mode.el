@@ -12,7 +12,8 @@
 (defun lsp-mode-hooks ()
   "Hooks for lsp-mode."
   (setq lsp-auto-guess-root t)
-  (lsp-treemacs-sync-mode t))
+  (lsp-treemacs-sync-mode t)
+  (lsp-enable-which-key-integration))
 (add-hook 'lsp-mode-hook 'lsp-mode-hooks)
 
 ;; rls -> $ rustup component add rls rust-analysis rust-src
