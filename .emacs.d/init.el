@@ -226,7 +226,7 @@
 (tool-bar-mode 0)
 
 ;; 行番号表示
-(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq-default display-line-numbers-width 4)
 
 ;; ウィンドウ逆順切替
