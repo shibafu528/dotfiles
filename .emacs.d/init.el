@@ -115,6 +115,7 @@
   (undohist-initialize))
 
 ;; undo-tree
+(setq undo-tree-auto-save-history nil)
 (global-undo-tree-mode)
 
 ;; point-undo
