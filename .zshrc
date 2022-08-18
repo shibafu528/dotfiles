@@ -57,6 +57,6 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 
 # IM config
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+export QT_IM_MODULE=fcitx5
