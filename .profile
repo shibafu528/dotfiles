@@ -1,4 +1,4 @@
-export EDITOR="nano"
+export EDITOR="vim"
 export DISABLE_BUNDLER_SETUP=""
 
 export ANDROID_HOME=/home/shibafu/Android/Sdk
