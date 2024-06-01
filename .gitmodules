@@ -25,3 +25,6 @@
 [submodule ".emacs.d/elisp/phscroll"]
 	path = .emacs.d/elisp/phscroll
 	url = https://github.com/misohena/phscroll.git
+[submodule "skk-jisyo/imasparql"]
+	path = skk-jisyo/imasparql
+	url = https://github.com/banjun/skk-jisyo-imasparql.git
